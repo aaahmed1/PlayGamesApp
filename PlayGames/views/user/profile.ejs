@@ -1,0 +1,41 @@
+<%- include('../partials/header.ejs')%>
+<main>
+    <h1>My Events</h1>
+    <%if (events.length < 1) {%>
+        <p>You haven't created any events</p>
+    <%} else {%>
+        <div class="profile-container">
+            <div>
+                <h1>Title</h1>
+                <h1>Actions</h1>
+            </div>
+            <%events.forEach((event) => {%>
+                <div>
+                    <a href="/events/<%=event.id%>"><p><%- event.title%></p></a>
+                    <form id="edit-delete-form">
+                        <button class="edit-button" type="submit" formmethod= "GET" formaction="/events/<%=event.id%>/edit"><i class="fa-solid fa-pen-to-square fa-xl"></i></button>
+                        <button class="delete-button" type="submit" formmethod="POST" formaction="/events/<%= event.id%>?_method=DELETE"><i class="fa-regular fa-trash-can fa-xl"></i></button> 
+                    </form>
+                </div>
+            <%});%>
+        </div>
+    <%}%>
+    <h1>My RSVPs</h1>
+    <%if (rsvps.length < 1) {%>
+        <p>You currently have no rsvps</p>
+    <%} else {%>
+        <div class="profile-container">
+            <div>
+                <h1>Title</h1>
+                <h1>Going?</h1>
+            </div>
+            <%rsvps.forEach((rsvp) => {%>
+                <div>
+                    <a href="/events/<%=rsvp.event.id%>"><p><%- rsvp.event.title%></p></a>
+                    <p><%-rsvp.status%></p>
+                </div>
+            <%});%>
+        </div>
+    <%}%>
+</main>
+<%- include('../partials/footer.ejs')%>

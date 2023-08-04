@@ -1,0 +1,45 @@
+<%- include('./partials/header.ejs')%>
+    <main>
+        <form class="new-event-form" action="/events" method="POST" enctype="multipart/form-data">
+            <div>
+                <label for="category">Category</label>
+                <select name="category" id="category" required>
+                    <option value="">--Select a Category--</option>
+                    <option value="Video Games">Video Games</option>
+                    <option value="Board Games">Board Games</option>
+                    <option value="Soccer">Soccer</option>
+                    <option value="Basketball">Basketball</option>
+                    <option value="Tennis">Tennis</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div>
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" placeholder="title" required>
+            </div>
+            <div>
+                <label for="details">Details</label>
+                <textarea name="details" id="details" placeholder="description" required></textarea>
+            </div>
+            <div>
+                <label for="where">Where</label>
+                <input type="text" name="where" id="where" placeholder="location" required>
+            </div>
+            <div>
+                <label for="start">Start</label>
+                <input type="datetime-local" name="start" id="start" required>
+            </div>
+            <div>
+                <label for="end">End</label>
+                <input type="datetime-local" name="end" id="end" required>
+            </div>
+            <div>
+                <label for="image">Image</label>
+                <input type="file" name="image" id="image" accept="image/png, image/jpeg" required>
+            </div>
+            <div>
+                <button class="submit-button" type="submit" id="submit">Submit</button>
+            </div>
+        </form>
+    </main>
+<%- include('./partials/footer.ejs')%>

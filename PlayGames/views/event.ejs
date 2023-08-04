@@ -1,0 +1,27 @@
+<%- include('./partials/header.ejs')%>
+    <main>
+        <div class="event-heading">
+            <h1><%- event.title%></h1>
+            <div class="rsvp-container">
+                <p>Going?</p>
+                <form id="rsvp-form">
+                    <button class="yes-button" type="submit" formmethod= "POST" name="status" value="YES" formaction="/events/<%=event.id%>/rsvp">Yes</button>
+                    <button class="no-button" type="submit" formmethod="POST" name="status" value="NO" formaction="/events/<%=event.id%>/rsvp" >No</button> 
+                    <button class="maybe-button" type="submit" formmethod="POST" name="status" value="MAYBE" formaction="/events/<%=event.id%>/rsvp" >Maybe</button>
+                </form>
+            </div>
+        </div>
+        <div class="event-content">
+            <div class="event-img-container">
+                <img src="<%= event.image%>" alt="">
+            </div>
+            <ul class="event-description">
+                <li><span class="bold">Host: </span><%- event.host.firstName + ' ' + event.host.lastName%></li>
+                <li><span class="bold">Date and Time: </span><%-start%> - <%-end%></li>
+                <li><span class="bold">Location: </span><%- event.where%></li>
+                <li><span class="bold">Details: </span><%- event.details%></li>
+                <li><span class="bold">Number of rsvps: </span><%- rsvps.length%></li>
+            </ul>
+        </div>
+    </main>
+<%- include('./partials/footer.ejs')%>

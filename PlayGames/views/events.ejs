@@ -1,0 +1,14 @@
+<%- include('./partials/header.ejs')%>
+    <main>
+        <% categories.forEach(category => {%>
+            <h1><%= category%></h1>
+            <ul class="events-list">
+                <% events.forEach(event => {
+                    if (event.category === category) {%>
+                        <li><a href="/events/<%= event.id%>"><%- event.title%></a></li>
+                    <%}
+                })%>
+            </ul>
+        <%})%>
+    </main>
+<%- include('./partials/footer.ejs')%>

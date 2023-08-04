@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayGames!</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://kit.fontawesome.com/db250f47a7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav class="nav-top">
+            <div class="logo-container">
+                <a href="/"><img src="/images/PlayGames!-logo.jpeg" alt="logo"></a>
+            </div>
+            <ul>
+                <%if (!user) {%>
+                    <li><a href="/users/new">Sign up</a></li>
+                    <li><a href="/users/login">Login</a></li>
+                <%} else {%>
+                    <li><a href="/events/new">New Event</a></li>
+                    <li><a href="/users/profile"><%=name%>'s Profile</a></li>
+                    <li><a href="/users/logout">Logout</a></li>
+                <%}%>
+            </ul>
+        </nav>
+        <nav class="nav-bottom">
+            <p><a href="/events">Events</a></p>
+        </nav>
+        <% if(errorMessages.length > 0) {%>
+            <% errorMessages.forEach(message=>{%>
+                <div class='error'>
+                    <%=message%>
+                </div>
+                <%});%>
+                    <%}%>
+        
+                        <% if(successMessages.length > 0) {%>
+        
+                            <% successMessages.forEach(message=>{%>
+                                <div class='success'>
+                                    <%=message%>
+                                </div>
+                                <%});%>
+                                    <%}%>
+    </header>
